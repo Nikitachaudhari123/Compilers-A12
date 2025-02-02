@@ -94,8 +94,8 @@
 niv_void bErrorPrint(niv_string fmt, ...);
 niv_void displayBuffer(BufferPointer ptr_Buffer);
 niv_long getFileSize(niv_string fname);
-niv_intg isNumber(const niv_string ns);
-niv_void startReader(niv_string, niv_string, niv_char, niv_intg, niv_intg);
+niv_int isNumber(const niv_string ns);
+niv_void startReader(niv_string, niv_string, niv_char, niv_int, niv_int);
 
 /*
 ************************************************************
@@ -107,13 +107,13 @@ niv_void startReader(niv_string, niv_string, niv_char, niv_intg, niv_intg);
 ************************************************************
 */
 
-niv_intg mainReader(niv_intg argc, niv_string* argv) {
+niv_int mainReader(niv_int argc, niv_string* argv) {
 
 	/* Create source input buffer */
 	niv_string program = argv[0];
 	niv_string input = argv[2];
 	niv_char mode = MODE_FIXED;
-	niv_intg size = 0, increment = 0, wrongNumber = 0;
+	niv_int size = 0, increment = 0, wrongNumber = 0;
 
 	/* Missing file name or/and mode parameter */
 	if (argc <= 2) {
@@ -165,11 +165,11 @@ niv_intg mainReader(niv_intg argc, niv_string* argv) {
 *	- Increment: buffer increment.
 ************************************************************
 */
-niv_void startReader(niv_string program, niv_string input, niv_char mode, niv_intg size, niv_intg increment) {
+niv_void startReader(niv_string program, niv_string input, niv_char mode, niv_int size, niv_int increment) {
 
 	BufferPointer bufferp;		/* pointer to Buffer structure */
 	FILE* fileHandler;			/* input file handle */
-	niv_intg loadSize = 0;		/* the size of the file loaded in the buffer */
+	niv_int loadSize = 0;		/* the size of the file loaded in the buffer */
 	niv_char symbol;			/* symbol read from input file */
 
 	/* Create buffer */
@@ -273,8 +273,8 @@ niv_long getFileSize(niv_string fname) {
 ************************************************************
 */
 
-niv_intg isNumber(const niv_string ns) {
-	niv_char c; niv_intg i = 0;
+niv_int isNumber(const niv_string ns) {
+	niv_char c; niv_int i = 0;
 	if (ns == NULL) return 0;
 	while ((c = ns[i++]) == 0) {
 		if (!isdigit(c)) return 0;

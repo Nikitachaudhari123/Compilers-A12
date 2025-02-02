@@ -129,30 +129,29 @@ niv_int main(int argc, char** argv) {
 /* TO_DO: Update your logo with your own language message */
 
 niv_void printLogo() {
-	print("\t===================================================");
-	print("\t|				  NIVLang Logo					   |");
-	print("\t===================================================");
-	print("\tNNNNNNNN        NNNNNNNNVVVVVVVV           VVVVVVVV");
-	print("\tN:::::::N       N::::::NV::::::V           V::::::V");
-	print("\tN::::::::N      N::::::NV::::::V           V::::::V");
-	print("\tN:::::::::N     N::::::NV::::::V           V::::::V");
-	print("\tN::::::::::N    N::::::N V:::::V           V:::::V	");
-	print("\tN:::::::::::N   N::::::N  V:::::V         V:::::V	");
-	print("\tN:::::::N::::N  N::::::N   V:::::V       V:::::V	");
-	print("\tN::::::N N::::N N::::::N    V:::::V     V:::::V	");
-	print("\tN::::::N  N::::N:::::::N     V:::::V   V:::::V		");
-	print("\tN::::::N   N:::::::::::N      V:::::V V:::::V		");
-	print("\tN::::::N    N::::::::::N       V:::::V:::::V		");
-	print("\tN::::::N     N:::::::::N        V:::::::::V		");
-	print("\tN::::::N      N::::::::N         V:::::::V			");
-	print("\tN::::::N       N:::::::N          V:::::V			");
-	print("\tN::::::N        N::::::N           V:::V			");
-	print("\tNNNNNNNN         NNNNNNN            VVV			");
-	print("\t===================================================");
-	print("\t|				Lightweight & Fast				   |");
-	print("\t===================================================");
+	printf("\n===================================================");
+	printf("\n|				  NIVLang Logo     				    |");
+	printf("\n===================================================");
+	printf("\nNNNNNNNN        NNNNNNNNVVVVVVVV           VVVVVVVV");
+	printf("\nN:::::::N       N::::::NV::::::V           V::::::V");
+	printf("\nN::::::::N      N::::::NV::::::V           V::::::V");
+	printf("\nN:::::::::N     N::::::NV::::::V           V::::::V");
+	printf("\nN::::::::::N    N::::::N V:::::V           V:::::V ");
+	printf("\nN:::::::::::N   N::::::N  V:::::V         V:::::V	 ");
+	printf("\nN:::::::N::::N  N::::::N   V:::::V       V:::::V	 ");
+	printf("\nN::::::N N::::N N::::::N    V:::::V     V:::::V	 ");
+	printf("\nN::::::N  N::::N:::::::N     V:::::V   V:::::V  	 ");
+	printf("\nN::::::N   N:::::::::::N      V:::::V V:::::V		 ");
+	printf("\nN::::::N    N::::::::::N       V:::::V:::::V		 ");
+	printf("\nN::::::N     N:::::::::N        V:::::::::V		 ");
+	printf("\nN::::::N      N::::::::N         V:::::::V	 	 ");
+	printf("\nN::::::N       N:::::::N          V:::::V			 ");
+	printf("\nN::::::N        N::::::N           V:::V			 ");
+	printf("\nNNNNNNNN         NNNNNNN            VVV			 ");
+	printf("\n===================================================");
+	printf("\n|	Lightweight & Fast			  |					 ");
+	printf("\n===================================================");
 }
 
-	}
 
 

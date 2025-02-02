@@ -114,8 +114,8 @@ Main functions signatures
 niv_int mainReader(niv_int argc, niv_string* argv);
 /* TO_DO: Remove comment in next assignments */
 /*
-niv_intg mainScanner(niv_intg argc, niv_string* argv);
-niv_intg mainParser(niv_intg argc, niv_string* argv);
+niv_int mainScanner(niv_int argc, niv_string* argv);
+niv_int mainParser(niv_int argc, niv_string* argv);
 */
 
 niv_void printLogo();

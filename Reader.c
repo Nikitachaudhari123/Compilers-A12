@@ -83,9 +83,9 @@
  *************************************************************
  */
 
-BufferPointer readerCreate(niv_intg size, niv_intg increment, niv_char mode) {
+BufferPointer readerCreate(niv_int size, niv_int increment, niv_char mode) {
 	BufferPointer readerPointer;
-	niv_intg count = 0;
+	niv_int count = 0;
 	/* TO_DO: Defensive programming */
 	if (!size)
 		size = READER_DEFAULT_SIZE;
@@ -127,12 +127,12 @@ BufferPointer readerCreate(niv_intg size, niv_intg increment, niv_char mode) {
 
 BufferPointer readerAddChar(BufferPointer readerPointer, niv_char ch) {
 	niv_string tempReader = niv_INVALID;
-	niv_intg newSize = 0;
+	niv_int newSize = 0;
 	niv_char tempChar = ' ';
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Reset Realocation */
 	/* TO_DO: Test the inclusion of chars */
-	if (readerPointer->positions.wrte * (niv_intg)sizeof(niv_char) < readerPointer->size) {
+	if (readerPointer->positions.wrte * (niv_int)sizeof(niv_char) < readerPointer->size) {
 		/* TO_DO: This buffer is NOT full */
 	}
 	else {
@@ -176,7 +176,7 @@ BufferPointer readerAddChar(BufferPointer readerPointer, niv_char ch) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_boln readerClear(BufferPointer const readerPointer) {
+niv_boolean readerClear(BufferPointer const readerPointer) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Adjust the write, mark and read to zero */
 	/* TO_DO: Adjust flags */
@@ -197,7 +197,7 @@ niv_boln readerClear(BufferPointer const readerPointer) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_boln readerFree(BufferPointer const readerPointer) {
+niv_boolean readerFree(BufferPointer const readerPointer) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Free pointers */
 	return niv_TRUE;
@@ -217,7 +217,7 @@ niv_boln readerFree(BufferPointer const readerPointer) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_boln readerIsFull(BufferPointer const readerPointer) {
+niv_boolean readerIsFull(BufferPointer const readerPointer) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Check flag if buffer is FUL */
 	return 0;
@@ -238,7 +238,7 @@ niv_boln readerIsFull(BufferPointer const readerPointer) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_boln readerIsEmpty(BufferPointer const readerPointer) {
+niv_boolean readerIsEmpty(BufferPointer const readerPointer) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Check flag if buffer is EMP */
 	return 0;
@@ -259,7 +259,7 @@ niv_boln readerIsEmpty(BufferPointer const readerPointer) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_boln readerSetMark(BufferPointer const readerPointer, niv_intg mark) {
+niv_boolean readerSetMark(BufferPointer const readerPointer, niv_int mark) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Adjust mark */
 	return niv_TRUE;
@@ -280,8 +280,8 @@ niv_boln readerSetMark(BufferPointer const readerPointer, niv_intg mark) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_intg readerPrint(BufferPointer const readerPointer) {
-	niv_intg cont = 0;
+niv_int readerPrint(BufferPointer const readerPointer) {
+	niv_int cont = 0;
 	niv_char c;
 	/* TO_DO: Defensive programming (including invalid chars) */
 	c = readerGetChar(readerPointer);
@@ -309,8 +309,8 @@ niv_intg readerPrint(BufferPointer const readerPointer) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_intg readerLoad(BufferPointer readerPointer, FILE* const fileDescriptor) {
-	niv_intg size = 0;
+niv_int readerLoad(BufferPointer readerPointer, FILE* const fileDescriptor) {
+	niv_int size = 0;
 	niv_char c;
 	/* TO_DO: Defensive programming */
 	while (!feof(fileDescriptor)) {
@@ -336,7 +336,7 @@ niv_intg readerLoad(BufferPointer readerPointer, FILE* const fileDescriptor) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_boln readerRecover(BufferPointer const readerPointer) {
+niv_boolean readerRecover(BufferPointer const readerPointer) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Recover positions: read and mark must be zero */
 	/* TO_DO: Update flags */
@@ -358,7 +358,7 @@ niv_boln readerRecover(BufferPointer const readerPointer) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_boln readerRetract(BufferPointer const readerPointer) {
+niv_boolean readerRetract(BufferPointer const readerPointer) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Retract (return 1 pos read) */
 	return niv_TRUE;
@@ -379,7 +379,7 @@ niv_boln readerRetract(BufferPointer const readerPointer) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_boln readerRestore(BufferPointer const readerPointer) {
+niv_boolean readerRestore(BufferPointer const readerPointer) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Restore positions (read to mark) */
 	return niv_TRUE;
@@ -423,7 +423,7 @@ niv_char readerGetChar(BufferPointer const readerPointer) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_string readerGetContent(BufferPointer const readerPointer, niv_intg pos) {
+niv_string readerGetContent(BufferPointer const readerPointer, niv_int pos) {
 	/* TO_DO: Defensive programming */
 	return readerPointer->content + pos;
 }
@@ -444,7 +444,7 @@ niv_string readerGetContent(BufferPointer const readerPointer, niv_intg pos) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_intg readerGetPosRead(BufferPointer const readerPointer) {
+niv_int readerGetPosRead(BufferPointer const readerPointer) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Return read */
 	return 0;
@@ -465,7 +465,7 @@ niv_intg readerGetPosRead(BufferPointer const readerPointer) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_intg readerGetPosWrte(BufferPointer const readerPointer) {
+niv_int readerGetPosWrte(BufferPointer const readerPointer) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Return wrte */
 	return 0;
@@ -486,7 +486,7 @@ niv_intg readerGetPosWrte(BufferPointer const readerPointer) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_intg readerGetPosMark(BufferPointer const readerPointer) {
+niv_int readerGetPosMark(BufferPointer const readerPointer) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Return mark */
 	return 0;
@@ -507,7 +507,7 @@ niv_intg readerGetPosMark(BufferPointer const readerPointer) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_intg readerGetSize(BufferPointer const readerPointer) {
+niv_int readerGetSize(BufferPointer const readerPointer) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Return size */
 	return 0;
@@ -527,7 +527,7 @@ niv_intg readerGetSize(BufferPointer const readerPointer) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_intg readerGetInc(BufferPointer const readerPointer) {
+niv_int readerGetInc(BufferPointer const readerPointer) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Return increment */
 	return 0;
@@ -583,7 +583,7 @@ niv_void readerPrintStat(BufferPointer const readerPointer) {
 *	- Adjust for your LANGUAGE.
 *************************************************************
 */
-niv_intg readerGetNumErrors(BufferPointer const readerPointer) {
+niv_int readerGetNumErrors(BufferPointer const readerPointer) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Returns the number of errors */
 	return 0;
@@ -624,7 +624,7 @@ niv_void readerCalcChecksum(BufferPointer readerPointer) {
 *************************************************************
 */
 
-niv_boln readerPrintFlags(BufferPointer readerPointer) {
+niv_boolean readerPrintFlags(BufferPointer readerPointer) {
 	/* TO_DO: Defensive programming */
 	/* TO_DO: Shows flags */
 	return niv_TRUE;

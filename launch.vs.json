@@ -3,14 +3,14 @@
   "defaults": {},
   "configurations": [
     {
-      "type": "default",
-      "project": "CMakeLists.txt",
-      "projectTarget": "Compilers.exe",
-      "name": "Compilers.exe",
       "args": [
         "1",
         "README.txt"
-      ]
+      ],
+      "name": "Compilers.exe",
+      "project": "CMakeLists.txt",
+      "projectTarget": "Compilers.exe",
+      "type": "default"
     }
   ]
 }

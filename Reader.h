@@ -95,58 +95,58 @@ enum READER_MODE {
 
 /* Offset declaration */
 typedef struct flag {
-	niv_boln isEmpty;			/* indicates if the buffer is empty */
-	niv_boln isFull;			/* indicates if the buffer is full */
-	niv_boln isRead;			/* indicates if the buffer was completely read */
-	niv_boln isMoved;			/* indicates if the buffer memory was changed */
+	niv_boolean isEmpty;			/* indicates if the buffer is empty */
+	niv_boolean isFull;			/* indicates if the buffer is full */
+	niv_boolean isRead;			/* indicates if the buffer was completely read */
+	niv_boolean isMoved;			/* indicates if the buffer memory was changed */
 } Flag;
 
 /* Offset declaration */
 typedef struct position {
-	niv_intg wrte;			/* the offset to the add chars (in chars) */
-	niv_intg read;			/* the offset to the get a char position (in chars) */
-	niv_intg mark;			/* the offset to the mark position (in chars) */
+	niv_int wrte;			/* the offset to the add chars (in chars) */
+	niv_int read;			/* the offset to the get a char position (in chars) */
+	niv_int mark;			/* the offset to the mark position (in chars) */
 } Position;
 
 /* Buffer structure */
 typedef struct bufferReader {
 	niv_string	    content;			/* pointer to the beginning of character array (character buffer) */
-	niv_intg		size;				/* current dynamic memory size (in bytes) allocated to character buffer */
-	niv_intg		increment;			/* character array increment factor */
+	niv_int		size;				/* current dynamic memory size (in bytes) allocated to character buffer */
+	niv_int		increment;			/* character array increment factor */
 	niv_char		mode;				/* operational mode indicator */
 	Flag			flags;				/* contains character array reallocation flag and end-of-buffer flag */
 	Position		positions;			/* Offset / position field */
-	niv_intg		histogram[NCHAR];	/* Statistics of chars */
-	niv_intg		numReaderErrors;	/* Number of errors from Reader */
+	niv_int		histogram[NCHAR];	/* Statistics of chars */
+	niv_int		numReaderErrors;	/* Number of errors from Reader */
 	niv_byte		checksum;
 } Buffer, * BufferPointer;
 
 /* FUNCTIONS DECLARATION:  .................................. */
 /* General Operations */
-BufferPointer	readerCreate		(niv_intg, niv_intg, niv_char);
+BufferPointer	readerCreate		(niv_int, niv_int, niv_char);
 BufferPointer	readerAddChar		(BufferPointer const, niv_char);
-niv_boln		readerClear		    (BufferPointer const);
-niv_boln		readerFree		    (BufferPointer const);
-niv_boln		readerIsFull		(BufferPointer const);
-niv_boln		readerIsEmpty		(BufferPointer const);
-niv_boln		readerSetMark		(BufferPointer const, niv_intg);
-niv_intg		readerPrint		    (BufferPointer const);
-niv_intg		readerLoad			(BufferPointer const, FILE* const);
-niv_boln		readerRecover		(BufferPointer const);
-niv_boln		readerRetract		(BufferPointer const);
-niv_boln		readerRestore		(BufferPointer const);
+niv_boolean		readerClear		    (BufferPointer const);
+niv_boolean		readerFree		    (BufferPointer const);
+niv_boolean		readerIsFull		(BufferPointer const);
+niv_boolean		readerIsEmpty		(BufferPointer const);
+niv_boolean		readerSetMark		(BufferPointer const, niv_int);
+niv_int		readerPrint		    (BufferPointer const);
+niv_int		readerLoad			(BufferPointer const, FILE* const);
+niv_boolean		readerRecover		(BufferPointer const);
+niv_boolean		readerRetract		(BufferPointer const);
+niv_boolean		readerRestore		(BufferPointer const);
 niv_void		readerCalcChecksum	(BufferPointer const);
-niv_boln		readerPrintFlags	(BufferPointer const);
+niv_boolean		readerPrintFlags	(BufferPointer const);
 niv_void		readerPrintStat     (BufferPointer const);
 /* Getters */
 niv_char		readerGetChar		(BufferPointer const);
-niv_string	readerGetContent	(BufferPointer const, niv_intg);
-niv_intg		readerGetPosRead	(BufferPointer const);
-niv_intg		readerGetPosWrte	(BufferPointer const);
-niv_intg		readerGetPosMark	(BufferPointer const);
-niv_intg		readerGetSize		(BufferPointer const);
-niv_intg		readerGetInc		(BufferPointer const);
+niv_string	readerGetContent	(BufferPointer const, niv_int);
+niv_int		readerGetPosRead	(BufferPointer const);
+niv_int		readerGetPosWrte	(BufferPointer const);
+niv_int		readerGetPosMark	(BufferPointer const);
+niv_int		readerGetSize		(BufferPointer const);
+niv_int		readerGetInc		(BufferPointer const);
 niv_char		readerGetMode		(BufferPointer const);
-niv_intg		readerGetNumErrors	(BufferPointer const);
+niv_int		readerGetNumErrors	(BufferPointer const);
 
 #endif
