@@ -81,38 +81,52 @@
  *	- Check flags.
  *************************************************************
  */
+ /*
+ ***********************************************************
+ * Function name: readerCreate
+ * Purpose: Creates the buffer reader according to capacity, increment
+ *          factor, and operational mode ('f', 'a', 'm')
+ * Parameters:
+ *   size = initial capacity
+ *   increment = increment factor
+ *   mode = operational mode
+ * Return value:
+ *   Pointer to Buffer structure
+ ************************************************************
+ */
 BufferPointer readerCreate(niv_int size, niv_int increment, niv_char mode) {
-		if (size <= 0) size = READER_DEFAULT_SIZE;
-		if (increment < 0) increment = READER_DEFAULT_INCREMENT;
-		if (mode != MODE_FIXED && mode != MODE_ADDIT && mode != MODE_MULTI) return niv_INVALID;
+	if (size <= 0) size = READER_DEFAULT_SIZE;
+	if (increment < 0) increment = READER_DEFAULT_INCREMENT;
+	if (mode != MODE_FIXED && mode != MODE_ADDIT && mode != MODE_MULTI) return niv_INVALID;
 
-		BufferPointer readerPointer = (BufferPointer)calloc(1, sizeof(Buffer));
-		if (!readerPointer) return niv_INVALID;
+	BufferPointer readerPointer = (BufferPointer)calloc(1, sizeof(Buffer));
+	if (!readerPointer) return niv_INVALID;
 
-		readerPointer->content = (niv_string)malloc(size);
-		if (!readerPointer->content) {
-			free(readerPointer);
-			return niv_INVALID;
-		}
-
-		readerPointer->size = size;
-		readerPointer->increment = increment;
-		readerPointer->mode = mode;
-		readerPointer->flags.isEmpty = 1;
-		readerPointer->flags.isFull = 0;
-		readerPointer->flags.isRead = 0;
-		readerPointer->flags.isMoved = 0;
-		readerPointer->positions.read = 0;
-		readerPointer->positions.wrte = 0;
-		readerPointer->positions.mark = 0;
-
-		for (niv_int i = 0; i < NCHAR; i++) {
-			readerPointer->histogram[i] = 0;
-		}
-
-		readerPointer->numReaderErrors = 0;
-		return readerPointer;
+	readerPointer->content = (niv_string)malloc(size);
+	if (!readerPointer->content) {
+		free(readerPointer);
+		return niv_INVALID;
 	}
+
+	readerPointer->size = size;
+	readerPointer->increment = increment;
+	readerPointer->mode = mode;
+	readerPointer->flags.isEmpty = 1;
+	readerPointer->flags.isFull = 0;
+	readerPointer->flags.isRead = 0;
+	readerPointer->flags.isMoved = 0;
+	readerPointer->positions.read = 0;
+	readerPointer->positions.wrte = 0;
+	readerPointer->positions.mark = 0;
+
+	for (niv_int i = 0; i < NCHAR; i++) {
+		readerPointer->histogram[i] = 0;
+	}
+
+	readerPointer->numReaderErrors = 0;
+	return readerPointer;
+}
+
 
 
 
@@ -129,44 +143,57 @@ BufferPointer readerCreate(niv_int size, niv_int increment, niv_char mode) {
 */
 BufferPointer readerAddChar(BufferPointer readerPointer, niv_char ch) {
 	if (!readerPointer || !readerPointer->content) return niv_INVALID;
-	readerPointer->flags.isMoved = 0;
 
+	/* Check if buffer is full */
 	if (readerPointer->positions.wrte >= readerPointer->size) {
 		niv_int newSize = 0;
-		niv_string tempReader = niv_INVALID;
+		niv_string tempReader = NULL;
 
-		readerPointer->flags.isFull = 0;
+		/* Handle different buffer modes */
 		switch (readerPointer->mode) {
 		case MODE_FIXED:
-			readerPointer->content[readerPointer->size - 1] = READER_TERMINATOR;
-			return niv_INVALID;
+			return niv_INVALID; /* No resizing in fixed mode */
+
 		case MODE_ADDIT:
 			newSize = readerPointer->size + readerPointer->increment;
 			break;
+
 		case MODE_MULTI:
-			newSize = readerPointer->size * readerPointer->increment;
+			newSize = readerPointer->size * 2; /* Double size */
 			break;
+
 		default:
 			return niv_INVALID;
 		}
+
+		/* Ensure new size does not exceed max size */
 		if (newSize > READER_MAX_SIZE) return niv_INVALID;
 
+		/* Reallocate memory */
 		tempReader = (niv_string)realloc(readerPointer->content, newSize);
-		if (!tempReader) return niv_INVALID;
+		if (!tempReader) return niv_INVALID; /* Memory allocation failed */
 
+		/* Update buffer properties */
 		readerPointer->content = tempReader;
 		readerPointer->size = newSize;
 		readerPointer->flags.isMoved = 1;
 	}
 
+	/* Add character to buffer */
 	readerPointer->content[readerPointer->positions.wrte++] = ch;
+
+	/* Update histogram */
 	readerPointer->histogram[(niv_int)ch]++;
+
+	/* Update flags */
 	readerPointer->flags.isEmpty = 0;
 	if (readerPointer->positions.wrte >= readerPointer->size) {
 		readerPointer->flags.isFull = 1;
 	}
+
 	return readerPointer;
 }
+
 
 
 /***********************************************************
@@ -523,6 +550,9 @@ niv_void readerCalcChecksum(BufferPointer readerPointer) {
 */
 niv_boolean readerPrintFlags(BufferPointer readerPointer) {
 	if (!readerPointer) return niv_FALSE;
-	printf("Flags:\n", readerPointer->flags);
+		printf("isEmpty: %d\n", readerPointer->flags.isEmpty);
+	printf("isFull: %d\n", readerPointer->flags.isFull);
+	printf("isRead: %d\n", readerPointer->flags.isRead);
+	printf("isMoved: %d\n", readerPointer->flags.isMoved);
 	return niv_TRUE;
 }
