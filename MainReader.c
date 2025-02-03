@@ -6,31 +6,29 @@
 * Professors: Paulo Sousa
 ************************************************************
 #
-# ECHO "=---------------------------------------="
-# ECHO "|  COMPILERS - ALGONQUIN COLLEGE (F24)  |"
-# ECHO "=---------------------------------------="
-# ECHO "    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    ”
-# ECHO "    @@                             @@    ”
-# ECHO "    @@           %&@@@@@@@@@@@     @@    ”
-# ECHO "    @@       @%% (@@@@@@@@@  @     @@    ”
-# ECHO "    @@      @& @   @ @       @     @@    ”
-# ECHO "    @@     @ @ %  / /   @@@@@@     @@    ”
-# ECHO "    @@      & @ @  @@              @@    ”
-# ECHO "    @@       @/ @*@ @ @   @        @@    ”
-# ECHO "    @@           @@@@  @@ @ @      @@    ”
-# ECHO "    @@            /@@    @@@ @     @@    ”
-# ECHO "    @@     @      / /     @@ @     @@    ”
-# ECHO "    @@     @ @@   /@/   @@@ @      @@    ”
-# ECHO "    @@     @@@@@@@@@@@@@@@         @@    ”
-# ECHO "    @@                             @@    ”
-# ECHO "    @@         S O F I A           @@    ”
-# ECHO "    @@                             @@    ”
-# ECHO "    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    ”
-# ECHO "                                         "
-# ECHO "[READER SCRIPT .........................]"
-# ECHO "                                         "
-*/
-
+#echo -e "\t==================================================="
+#echo -e "\t|                 NIVLang Logo                    |"
+#echo -e "\t==================================================="
+#echo -e "\tNNNNNNNN        NNNNNNNNVVVVVVVV           VVVVVVVV"
+#echo -e "\tN:::::::N       N::::::NV::::::V           V::::::V"
+#echo -e "\tN::::::::N      N::::::NV::::::V           V::::::V"
+#echo -e "\tN:::::::::N     N::::::NV::::::V           V::::::V"
+#echo -e "\tN::::::::::N    N::::::N V:::::V           V:::::V "
+#echo -e "\tN:::::::::::N   N::::::N  V:::::V         V:::::V  "
+#echo -e "\tN:::::::N::::N  N::::::N   V:::::V       V:::::V   "
+#echo -e "\tN::::::N N::::N N::::::N    V:::::V     V:::::V	   "
+#echo -e "\tN::::::N  N::::N:::::::N     V:::::V   V:::::V	   "
+#echo -e "\tN::::::N   N:::::::::::N      V:::::V V:::::V	   "
+#echo -e "\tN::::::N    N::::::::::N       V:::::V:::::V	   "
+#echo -e "\tN::::::N     N:::::::::N        V:::::::::V		   "
+#echo -e "\tN::::::N      N::::::::N         V:::::::V		   "
+#echo -e "\tN::::::N       N:::::::N          V:::::V		   "
+#echo -e "\tN::::::N        N::::::N           V:::V		   "
+#echo -e "\tNNNNNNNN         NNNNNNN            VVV			   "
+#echo -e "\t==================================================="
+#echo -e "\t|             Lightweight & Fast                  |"
+#echo -e "\t==================================================="
+/*
 /*
 ************************************************************
 * File name: MainReader.c
@@ -116,6 +114,7 @@ niv_int mainReader(niv_int argc, niv_string* argv) {
 	niv_int size = 0, increment = 0, wrongNumber = 0;
 
 	/* Missing file name or/and mode parameter */
+
 	if (argc <= 2) {
 		bErrorPrint("\nDate: %s  Time: %s", __DATE__, __TIME__);
 		bErrorPrint("\nRuntime error at line %d in file %s\n", __LINE__, __FILE__);
