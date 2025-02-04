@@ -1,0 +1,47 @@
+
+===================================================
+|				  NIVLang Logo     				    |
+===================================================
+NNNNNNNN        NNNNNNNNVVVVVVVV           VVVVVVVV
+N:::::::N       N::::::NV::::::V           V::::::V
+N::::::::N      N::::::NV::::::V           V::::::V
+N:::::::::N     N::::::NV::::::V           V::::::V
+N::::::::::N    N::::::N V:::::V           V:::::V 
+N:::::::::::N   N::::::N  V:::::V         V:::::V	 
+N:::::::N::::N  N::::::N   V:::::V       V:::::V	 
+N::::::N N::::N N::::::N    V:::::V     V:::::V	 
+N::::::N  N::::N:::::::N     V:::::V   V:::::V  	 
+N::::::N   N:::::::::::N      V:::::V V:::::V		 
+N::::::N    N::::::::::N       V:::::V:::::V		 
+N::::::N     N:::::::::N        V:::::::::V		 
+N::::::N      N::::::::N         V:::::::V	 	 
+N::::::N       N:::::::N          V:::::V			 
+N::::::N        N::::::N           V:::V			 
+NNNNNNNN         NNNNNNN            VVV			 
+===================================================
+|	Lightweight & Fast			  |					 
+===================================================
+[Option '1': Starting READER .....]
+
+Enter the name of the file to read fromReading file BIG.nl ....Please wait
+
+Printing buffer parameters:
+
+The capacity of the buffer is:  100
+The current size of the buffer is:  100
+The operational mode of the buffer is: f
+The increment factor of the buffer is:  10
+The first symbol in the buffer is:  L
+The value of the flags field are:
+isEmpty: 0
+isFull: 1
+isRead: 0
+isMoved: 0
+Reader statistics : 
+B[ ]=14, B[,]=1, B[.]=1, B[F]=1, B[L]=1, B[a]=5, B[b]=1, B[c]=5, B[d]=4, B[e]=8, B[g]=2, B[i]=11, B[l]=1, B[m]=5, B[n]=8, B[o]=5, B[p]=2, B[r]=5, B[s]=6, B[t]=8, B[u]=5, B[x]=1, 
+Number of errors: 0
+Checksum: 10
+
+Printing buffer contents:
+
+Lorem ipsum odor amet, consectetuer adipiscing elit. Finibus magnis interdum ac ex tincidunt nostra 
