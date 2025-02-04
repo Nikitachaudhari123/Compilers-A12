@@ -180,7 +180,7 @@ niv_void startReader(niv_string program, niv_string input, niv_char mode, niv_in
 		bErrorPrint("Filename: %s %c %d %d\n", input, mode, size, increment);
 		exit(1);
 	}
-
+	
 	/* Open source file */
 	if ((fileHandler = fopen(input, "r")) == NULL) {
 		bErrorPrint("%s%s%s", program, ": Cannot open file: ", input);

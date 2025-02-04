@@ -45,7 +45,7 @@ ECHO "N::::::N        N::::::N           V:::V	   		  ”
 ECHO "NNNNNNNN         NNNNNNN            VVV	 	      ”
 ECHO "=================================================== ”
 ECHO "|             Lightweight & Fast                  | "
-ECHO "==================================================="                                         "
+ECHO "==================================================="                  
 ECHO "[READER SCRIPT .........................]"
 ECHO "                                         "
 
@@ -57,7 +57,7 @@ ren *.exe %COMPILER%
 :: Basic Tests (A12 - F24) - - - - - - - - - - - - - - - - - - - - - -
 
 %COMPILER% %PARAM% %FILE1%.%EXTENSION%	> %FILE1%-%ASSIGNMENT%.%OUTPUT%	2> %FILE1%-%ASSIGNMENT%.%ERROR%
-%COMPILER% %PARAM% %FILE2%.%EXTENSION%	> %FILE2%-%ASSIGNMENT%.%OUTPUT%	2> %FILE2%-%ASSIGNMENT%.%ERROR%
+%COMPILER% %PARAM% %FILE1%.%EXTENSION%	> %FILE1%-%ASSIGNMENT%.%OUTPUT%	2> %FILE1%-%ASSIGNMENT%.%ERROR%
 %COMPILER% %PARAM% %FILE3%.%EXTENSION%	> %FILE3%-%ASSIGNMENT%.%OUTPUT%	2> %FILE3%-%ASSIGNMENT%.%ERROR%
 
 ::
@@ -65,9 +65,9 @@ ren *.exe %COMPILER%
 ::
 :: Advanced Tests (A12 - F24) - - - - - - - - -- - - - - - - - - - - -
 
-%COMPILER% %PARAM% %FILE7%.%EXTENSION%	f 100 10	> %FILE7%-%ASSIGNMENT%-f-100-10.%OUTPUT%	2> %FILE7%-%ASSIGNMENT%-f-100-10.%ERROR%
-%COMPILER% %PARAM% %FILE7%.%EXTENSION%	a 100 10	> %FILE7%-%ASSIGNMENT%-a-100-10.%OUTPUT%	2> %FILE7%-%ASSIGNMENT%-a-100-10.%ERROR%
-%COMPILER% %PARAM% %FILE7%.%EXTENSION%	m 100 10	> %FILE7%-%ASSIGNMENT%-m-100-10.%OUTPUT%	2> %FILE7%-%ASSIGNMENT%-m-100-10.%ERROR%
+%COMPILER% %PARAM% %FILE1%.%EXTENSION%	f 100 10	> %FILE1%-%ASSIGNMENT%-f-100-10.%OUTPUT%	2> %FILE1%-%ASSIGNMENT%-f-100-10.%ERROR%
+%COMPILER% %PARAM% %FILE2%.%EXTENSION%	a 100 10	> %FILE2%-%ASSIGNMENT%-a-100-10.%OUTPUT%	2> %FILE2%-%ASSIGNMENT%-a-100-10.%ERROR%
+%COMPILER% %PARAM% %FILE3%.%EXTENSION%	m 100 10	> %FILE3%-%ASSIGNMENT%-m-100-10.%OUTPUT%	2> %FILE3%-%ASSIGNMENT%-m-100-10.%ERROR%
 
 :: SHOW OUTPUTS - - - - - - - - - - - - - - - - - - - - - - - - - - -
 DIR *.OUT
